@@ -5,13 +5,31 @@
   "main": "index.js",
   "scripts": {
     "build": "sass src/scss:dist/css",
-    "start": "sass --watch src/scss:dist/css & live-server"
+    "start": "sass --watch src/scss:dist/css & live-server",
+    "lint": "eslint src/**/*.js",
+    "lint-fix": "eslint src/**/*.js --fix",
+    "format": "prettier --write src/**/*.js",
+    "prepare": "husky install",
+    "test": "npm run test-jest",
+    "test-jest": "jest"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint-fix && npm run format"
+    }
   },
   "keywords": [],
   "author": "Noroff",
   "license": "ISC",
   "devDependencies": {
-    "live-server": "^1.2.2",
+    "@babel/core": "^7.22.0",
+    "@babel/preset-env": "^7.22.0",
+    "cypress": "^13.15.0",
+    "eslint": "^8.57.1",
+    "husky": "^8.0.0",
+    "jest": "^29.2.0",
+    "live-server": "^1.2.0",
+    "prettier": "^3.3.3",
     "sass": "^1.54.8"
   },
   "dependencies": {
